@@ -98,12 +98,9 @@ export default function MainQuestion() {
   let takeName = (e)=>{
     setDeleteName(e.target.valeu)
   }
-  let handleDeleting = (id) => {
-    if (deleteName === owner) {
-      setArr(prevArr =>
-        prevArr.filter((q) => q.id !== id && q.owner === owner)
-      );
-    }
+  let handleDeleting = ( id,name) => {
+    setArr(prevArr => prevArr.filter(item => item.Owner !== name && item.id !== id))
+    
     setDeleteInp(false)
   };
   
@@ -156,13 +153,13 @@ export default function MainQuestion() {
               <button onClick={() => handleEditing(item.id)}>Submit</button>
             </>
           }
-          <button id='deleteBtn' onClick={() => handleDelete(item.id)}>Delete</button>
+          <button id='deleteBtn' onClick={() => handleDelete(item.id, )}>Delete</button>
          
     {deleteInp && deleteId === item.id && (
       <>
         <h3>Confirm Name to delete the Question</h3>
         <input type="text" onChange={takeName} value={deleteName} />
-        <button onClick={() => handleDeleting(item.id)}>Submit</button>
+        <button onClick={() => handleDeleting(item.id,item.Owner)}>Submit</button>
       </>
     )}
         </div>
